@@ -57,7 +57,7 @@
 
         if (result.success) {
             alert("เข้าสู่ระบบสำเร็จ");
-            // window.location.href = "index.php"; 
+            // window.location.href = "home.php"; 
         } else {
             alert("เข้าสู่ระบบไม่สำเร็จ: " + result.message);
         }

@@ -6,7 +6,7 @@ $user_role = $_SESSION['user']['role'] ?? null; // ตัวอย่าง: 'cu
 
 <nav class="bg-indigo-700 shadow-md py-4">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-    <a href="/home.php" class="text-xl font-bold text-white no-underline">DormBooking</a>
+    <a href="home.php" class="text-xl font-bold text-white no-underline">DormBooking</a>
 
     <div class="space-x-4">
       <?php if (!$is_logged_in): ?>

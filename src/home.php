@@ -15,15 +15,21 @@
   <?php include('includes/navbar.php'); ?>
 
   <!-- กล่องค้นหา -->
-  <div class="max-w-4xl mx-auto p-6 bg-white rounded-xl shadow-lg mt-10 space-y-6 border border-indigo-200">
+  <<div class="max-w-4xl mx-auto p-6 bg-white rounded-xl shadow-lg mt-10 space-y-6 border border-indigo-200">
     <div class="flex flex-wrap gap-4">
-      <button class="px-4 py-2 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium transition">
-        การเข้าพักข้ามคืน
-      </button>
-      <button class="px-4 py-2 rounded-full bg-indigo-100 hover:bg-indigo-200 text-indigo-800 font-medium transition">
-        การเข้าพักช่วงกลางวัน
-      </button>
-    </div>
+  <!-- ปุ่มการเข้าพักข้ามคืน (ค่าเริ่มต้น: active) -->
+  <button id="overnightBtn" onclick="setActiveStay('overnight')"
+    class="px-4 py-2 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium transition">
+    การเข้าพักข้ามคืน
+  </button>
+
+  <!-- ปุ่มการเข้าพักช่วงกลางวัน -->
+  <button id="dayuseBtn" onclick="setActiveStay('dayuse')"
+    class="px-4 py-2 rounded-full bg-indigo-100 hover:bg-indigo-200 text-indigo-800 font-medium transition">
+    การเข้าพักช่วงกลางวัน
+  </button>
+</div>
+
 
     <div>
       <input type="text" placeholder="ใส่จุดหมายปลายทางหรือชื่อที่พัก"
@@ -114,266 +120,285 @@
         ค้นหา
       </button>
     </div>
-  </div>
-
-  <p class="text-center mt-5 font-line font-bold text-2xl ">หอพักเเนะนำ</p>
-  <!-- แสดงสไลด์ -->
-  <div class="w-full max-w-6xl mx-auto mt-10 px-4 mb-20">
-    <div class="flex flex-col md:flex-row gap-8 items-center">
-
-      <!-- Slide ทางซ้าย -->
-      <div class="w-full md:w-1/2">
-        <div id="carouselExampleIndicators" class="carousel slide w-full" data-bs-ride="carousel">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-              aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-              aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-              aria-label="Slide 3"></button>
-          </div>
-
-          <div class="carousel-inner rounded-lg overflow-hidden">
-            <div class="carousel-item active">
-              <img src="assets/hotel.jpg" class="d-block w-100 rounded-3" style="height: 360px; object-fit: cover;" alt="หอพัก 1">
-            </div>
-            <div class="carousel-item">
-              <img src="assets/indoors.jpg" class="d-block w-100 rounded-3" style="height: 360px; object-fit: cover;" alt="หอพัก 2">
-            </div>
-            <div class="carousel-item">
-              <img src="assets/bedroom.jpg" class="d-block w-100 rounded-3" style="height: 360px; object-fit: cover;" alt="หอพัก 3">
-            </div>
-          </div>
-
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">ก่อนหน้า</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">ถัดไป</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- ข้อความทางขวา -->
-      <div class="w-full md:w-1/2">
-        <h2 class="text-2xl font-bold text-indigo-700 mb-4">หอพักพิมพ์ใจ</h2>
-        <p class="text-gray-700 leading-relaxed">
-          หอพักพิมพ์ใจเหมาะสำหรับนักศึกษาที่ต้องการความสงบและความเป็นส่วนตัว อยู่ใกล้มหาวิทยาลัยเพียง 300 เมตร
-          มีสิ่งอำนวยความสะดวกครบครัน ทั้งแอร์ เครื่องทำน้ำอุ่น และระบบเข้า-ออกด้วยคีย์การ์ด
-        </p>
-        <ul class="list-disc list-inside mt-4 text-gray-600">
-          <li>ห้องพักส่วนตัว พร้อมเฟอร์นิเจอร์</li>
-          <li>เข้า-ออกด้วยระบบคีย์การ์ด</li>
-          <li>ฟรีอินเทอร์เน็ตความเร็วสูง</li>
-          <li>ใกล้ร้านสะดวกซื้อและร้านอาหาร</li>
-        </ul>
-        <div class="mt-6 flex flex-wrap gap-4  justify-end">
-          <a href="#details" class="bg-indigo-600 text-white px-5 py-2 rounded-xl shadow hover:bg-indigo-700 transition no-underline" style="text-decoration: none;">
-            ดูรายละเอียด
-          </a>
-        </div>
-
-      </div>
-
     </div>
-  </div>
 
-  <div class="w-full max-w-6xl mx-auto mt-10 px-4 mb-20">
-    <div class="flex flex-col md:flex-row gap-8 items-center">
+    <p class="text-center mt-5 font-line font-bold text-2xl ">หอพักเเนะนำ</p>
+    <!-- แสดงสไลด์ -->
+    <div class="w-full max-w-6xl mx-auto mt-10 px-4 mb-20">
+      <div class="flex flex-col md:flex-row gap-8 items-center">
 
-      <!-- Slide ทางซ้าย -->
-      <div class="w-full md:w-1/2">
-        <div id="carouselExampleIndicators" class="carousel slide w-full" data-bs-ride="carousel">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-              aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-              aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-              aria-label="Slide 3"></button>
+        <!-- Slide ทางซ้าย -->
+        <div class="w-full md:w-1/2">
+          <div id="carouselExampleIndicators" class="carousel slide w-full" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+            </div>
+
+            <div class="carousel-inner rounded-lg overflow-hidden">
+              <div class="carousel-item active">
+                <img src="assets/hotel.jpg" class="d-block w-100 rounded-3" style="height: 360px; object-fit: cover;" alt="หอพัก 1">
+              </div>
+              <div class="carousel-item">
+                <img src="assets/indoors.jpg" class="d-block w-100 rounded-3" style="height: 360px; object-fit: cover;" alt="หอพัก 2">
+              </div>
+              <div class="carousel-item">
+                <img src="assets/bedroom.jpg" class="d-block w-100 rounded-3" style="height: 360px; object-fit: cover;" alt="หอพัก 3">
+              </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">ก่อนหน้า</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">ถัดไป</span>
+            </button>
           </div>
-
-          <div class="carousel-inner rounded-lg overflow-hidden">
-            <div class="carousel-item active">
-              <img src="assets/hotel.jpg" class="d-block w-100 rounded-3" style="height: 360px; object-fit: cover;" alt="หอพัก 1">
-            </div>
-            <div class="carousel-item">
-              <img src="assets/indoors.jpg" class="d-block w-100 rounded-3" style="height: 360px; object-fit: cover;" alt="หอพัก 2">
-            </div>
-            <div class="carousel-item">
-              <img src="assets/bedroom.jpg" class="d-block w-100 rounded-3" style="height: 360px; object-fit: cover;" alt="หอพัก 3">
-            </div>
-          </div>
-
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">ก่อนหน้า</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">ถัดไป</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- ข้อความทางขวา -->
-      <div class="w-full md:w-1/2">
-        <h2 class="text-2xl font-bold text-indigo-700 mb-4">หอพักบ้านสุขใจ</h2>
-        <p class="text-gray-700 leading-relaxed">
-          หอพักบ้านสุขใจเหมาะสำหรับผู้ที่ชอบบรรยากาศเป็นกันเอง เป็นอาคาร 4 ชั้นพร้อมที่จอดรถ
-          พื้นที่ภายในตกแต่งแบบโมเดิร์น พร้อมเครื่องซักผ้าหยอดเหรียญและพื้นที่นั่งเล่นรวม
-        </p>
-        <ul class="list-disc list-inside mt-4 text-gray-600">
-          <li>มีลิฟต์บริการทุกชั้น</li>
-          <li>ห้องน้ำในตัว พร้อมเครื่องทำน้ำอุ่น</li>
-          <li>พื้นที่พักผ่อนรวม และโต๊ะอ่านหนังสือ</li>
-          <li>ใกล้ป้ายรถเมล์และวินมอเตอร์ไซค์</li>
-        </ul>
-        <div class="mt-6 flex flex-wrap justify-end gap-4">
-          <a href="#details" class="bg-indigo-600 text-white px-5 py-2 rounded-xl shadow hover:bg-indigo-700 transition no-underline" style="text-decoration: none;">
-            ดูรายละเอียด
-          </a>
-
         </div>
 
-      </div>
-
-    </div>
-  </div>
-
-  <div class="w-full max-w-6xl mx-auto mt-10 px-4 mb-20">
-    <div class="flex flex-col md:flex-row gap-8 items-center">
-
-      <!-- Slide ทางซ้าย -->
-      <div class="w-full md:w-1/2">
-        <div id="carouselExampleIndicators" class="carousel slide w-full" data-bs-ride="carousel">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-              aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-              aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-              aria-label="Slide 3"></button>
+        <!-- ข้อความทางขวา -->
+        <div class="w-full md:w-1/2">
+          <h2 class="text-2xl font-bold text-indigo-700 mb-4">หอพักพิมพ์ใจ</h2>
+          <p class="text-gray-700 leading-relaxed">
+            หอพักพิมพ์ใจเหมาะสำหรับนักศึกษาที่ต้องการความสงบและความเป็นส่วนตัว อยู่ใกล้มหาวิทยาลัยเพียง 300 เมตร
+            มีสิ่งอำนวยความสะดวกครบครัน ทั้งแอร์ เครื่องทำน้ำอุ่น และระบบเข้า-ออกด้วยคีย์การ์ด
+          </p>
+          <ul class="list-disc list-inside mt-4 text-gray-600">
+            <li>ห้องพักส่วนตัว พร้อมเฟอร์นิเจอร์</li>
+            <li>เข้า-ออกด้วยระบบคีย์การ์ด</li>
+            <li>ฟรีอินเทอร์เน็ตความเร็วสูง</li>
+            <li>ใกล้ร้านสะดวกซื้อและร้านอาหาร</li>
+          </ul>
+          <div class="mt-6 flex flex-wrap gap-4  justify-end">
+            <a href="#details" class="bg-indigo-600 text-white px-5 py-2 rounded-xl shadow hover:bg-indigo-700 transition no-underline" style="text-decoration: none;">
+              ดูรายละเอียด
+            </a>
           </div>
 
-          <div class="carousel-inner rounded-lg overflow-hidden">
-            <div class="carousel-item active">
-              <img src="assets/hotel.jpg" class="d-block w-100 rounded-3" style="height: 360px; object-fit: cover;" alt="หอพัก 1">
-            </div>
-            <div class="carousel-item">
-              <img src="assets/indoors.jpg" class="d-block w-100 rounded-3" style="height: 360px; object-fit: cover;" alt="หอพัก 2">
-            </div>
-            <div class="carousel-item">
-              <img src="assets/bedroom.jpg" class="d-block w-100 rounded-3" style="height: 360px; object-fit: cover;" alt="หอพัก 3">
-            </div>
-          </div>
-
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">ก่อนหน้า</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">ถัดไป</span>
-          </button>
         </div>
-      </div>
 
-      <!-- ข้อความทางขวา -->
-      <div class="w-full md:w-1/2">
-        <h2 class="text-2xl font-bold text-indigo-700 mb-4">หอพักร่มรื่น เพลส</h2>
-        <p class="text-gray-700 leading-relaxed">
-          หอพักร่มรื่น เพลส ตั้งอยู่ในซอยที่เงียบสงบ มีต้นไม้ใหญ่ให้ร่มเงา
-          เหมาะสำหรับนักเรียน นักศึกษา หรือคนทำงานที่ต้องการความเรียบง่ายและความเป็นธรรมชาติ
-        </p>
-        <ul class="list-disc list-inside mt-4 text-gray-600">
-          <li>มีสวนหย่อมเล็กสำหรับพักผ่อน</li>
-          <li>ระบบรักษาความปลอดภัย 24 ชม.</li>
-          <li>สามารถเลี้ยงแมวหรือสุนัขพันธุ์เล็กได้</li>
-          <li>ราคาย่อมเยา เริ่มต้นเพียง 2,500 บาท/เดือน</li>
-        </ul>
-        <div class="mt-6 flex flex-wrap justify-end gap-4">
-          <a href="#details" class="bg-indigo-600 text-white px-5 py-2 rounded-xl shadow hover:bg-indigo-700 transition no-underline" style="text-decoration: none;">
-            ดูรายละเอียด
-          </a>
-        </div>
       </div>
     </div>
-  </div>
-  <div class="flex justify-center mb-16">
-    <a href="rooms.php"
-      class="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition">
-      ดูห้องทั้งหมด
-    </a>
-  </div>
+
+    <div class="w-full max-w-6xl mx-auto mt-10 px-4 mb-20">
+      <div class="flex flex-col md:flex-row gap-8 items-center">
+
+        <!-- Slide ทางซ้าย -->
+        <div class="w-full md:w-1/2">
+          <div id="carouselExampleIndicators" class="carousel slide w-full" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+            </div>
+
+            <div class="carousel-inner rounded-lg overflow-hidden">
+              <div class="carousel-item active">
+                <img src="assets/hotel.jpg" class="d-block w-100 rounded-3" style="height: 360px; object-fit: cover;" alt="หอพัก 1">
+              </div>
+              <div class="carousel-item">
+                <img src="assets/indoors.jpg" class="d-block w-100 rounded-3" style="height: 360px; object-fit: cover;" alt="หอพัก 2">
+              </div>
+              <div class="carousel-item">
+                <img src="assets/bedroom.jpg" class="d-block w-100 rounded-3" style="height: 360px; object-fit: cover;" alt="หอพัก 3">
+              </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">ก่อนหน้า</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">ถัดไป</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ข้อความทางขวา -->
+        <div class="w-full md:w-1/2">
+          <h2 class="text-2xl font-bold text-indigo-700 mb-4">หอพักบ้านสุขใจ</h2>
+          <p class="text-gray-700 leading-relaxed">
+            หอพักบ้านสุขใจเหมาะสำหรับผู้ที่ชอบบรรยากาศเป็นกันเอง เป็นอาคาร 4 ชั้นพร้อมที่จอดรถ
+            พื้นที่ภายในตกแต่งแบบโมเดิร์น พร้อมเครื่องซักผ้าหยอดเหรียญและพื้นที่นั่งเล่นรวม
+          </p>
+          <ul class="list-disc list-inside mt-4 text-gray-600">
+            <li>มีลิฟต์บริการทุกชั้น</li>
+            <li>ห้องน้ำในตัว พร้อมเครื่องทำน้ำอุ่น</li>
+            <li>พื้นที่พักผ่อนรวม และโต๊ะอ่านหนังสือ</li>
+            <li>ใกล้ป้ายรถเมล์และวินมอเตอร์ไซค์</li>
+          </ul>
+          <div class="mt-6 flex flex-wrap justify-end gap-4">
+            <a href="#details" class="bg-indigo-600 text-white px-5 py-2 rounded-xl shadow hover:bg-indigo-700 transition no-underline" style="text-decoration: none;">
+              ดูรายละเอียด
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="w-full max-w-6xl mx-auto mt-10 px-4 mb-20">
+      <div class="flex flex-col md:flex-row gap-8 items-center">
+
+        <!-- Slide ทางซ้าย -->
+        <div class="w-full md:w-1/2">
+          <div id="carouselExampleIndicators" class="carousel slide w-full" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+            </div>
+
+            <div class="carousel-inner rounded-lg overflow-hidden">
+              <div class="carousel-item active">
+                <img src="assets/hotel.jpg" class="d-block w-100 rounded-3" style="height: 360px; object-fit: cover;" alt="หอพัก 1">
+              </div>
+              <div class="carousel-item">
+                <img src="assets/indoors.jpg" class="d-block w-100 rounded-3" style="height: 360px; object-fit: cover;" alt="หอพัก 2">
+              </div>
+              <div class="carousel-item">
+                <img src="assets/bedroom.jpg" class="d-block w-100 rounded-3" style="height: 360px; object-fit: cover;" alt="หอพัก 3">
+              </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">ก่อนหน้า</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">ถัดไป</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ข้อความทางขวา -->
+        <div class="w-full md:w-1/2">
+          <h2 class="text-2xl font-bold text-indigo-700 mb-4">หอพักร่มรื่น เพลส</h2>
+          <p class="text-gray-700 leading-relaxed">
+            หอพักร่มรื่น เพลส ตั้งอยู่ในซอยที่เงียบสงบ มีต้นไม้ใหญ่ให้ร่มเงา
+            เหมาะสำหรับนักเรียน นักศึกษา หรือคนทำงานที่ต้องการความเรียบง่ายและความเป็นธรรมชาติ
+          </p>
+          <ul class="list-disc list-inside mt-4 text-gray-600">
+            <li>มีสวนหย่อมเล็กสำหรับพักผ่อน</li>
+            <li>ระบบรักษาความปลอดภัย 24 ชม.</li>
+            <li>สามารถเลี้ยงแมวหรือสุนัขพันธุ์เล็กได้</li>
+            <li>ราคาย่อมเยา เริ่มต้นเพียง 2,500 บาท/เดือน</li>
+          </ul>
+          <div class="mt-6 flex flex-wrap justify-end gap-4">
+            <a href="#details" class="bg-indigo-600 text-white px-5 py-2 rounded-xl shadow hover:bg-indigo-700 transition no-underline" style="text-decoration: none;">
+              ดูรายละเอียด
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-center mb-16">
+      <a href="rooms.php"
+        class="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition">
+        ดูห้องทั้งหมด
+      </a>
+    </div>
 
 
-  <div class="mt-20">
-    <?php include('includes/footer.php'); ?>
-  </div>
+    <div class="mt-20">
+      <?php include('includes/footer.php'); ?>
+    </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script>
-    let checkinPicker = flatpickr("#checkin", {
-      dateFormat: "d M Y",
-      onChange: function(selectedDates, dateStr) {
-        document.getElementById("checkin-display").textContent = dateStr;
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+      let checkinPicker = flatpickr("#checkin", {
+        dateFormat: "d M Y",
+        onChange: function(selectedDates, dateStr) {
+          document.getElementById("checkin-display").textContent = dateStr;
+        }
+      });
+
+      let checkoutPicker = flatpickr("#checkout", {
+        dateFormat: "d M Y",
+        onChange: function(selectedDates, dateStr) {
+          document.getElementById("checkout-display").textContent = dateStr;
+        }
+      });
+
+      function toggleGuestDropdown() {
+        document.getElementById("guest-dropdown").classList.toggle("hidden");
       }
-    });
 
-    let checkoutPicker = flatpickr("#checkout", {
-      dateFormat: "d M Y",
-      onChange: function(selectedDates, dateStr) {
-        document.getElementById("checkout-display").textContent = dateStr;
+      function changeGuestCount(delta) {
+        let count = parseInt(document.getElementById("guest-count").textContent);
+        count = Math.max(1, count + delta);
+        document.getElementById("guest-count").textContent = count;
+        updateGuestSummary();
       }
-    });
 
-    function toggleGuestDropdown() {
-      document.getElementById("guest-dropdown").classList.toggle("hidden");
-    }
+      function changeRoomCount(delta) {
+        let count = parseInt(document.getElementById("room-count").textContent);
+        count = Math.max(1, count + delta);
+        document.getElementById("room-count").textContent = count;
+        updateGuestSummary();
+      }
 
-    function changeGuestCount(delta) {
-      let count = parseInt(document.getElementById("guest-count").textContent);
-      count = Math.max(1, count + delta);
-      document.getElementById("guest-count").textContent = count;
-      updateGuestSummary();
-    }
+      function changeAnimalCount(delta) {
+        let count = parseInt(document.getElementById("animal-count").textContent);
+        count = Math.max(0, count + delta);
+        document.getElementById("animal-count").textContent = count;
+      }
 
-    function changeRoomCount(delta) {
-      let count = parseInt(document.getElementById("room-count").textContent);
-      count = Math.max(1, count + delta);
-      document.getElementById("room-count").textContent = count;
-      updateGuestSummary();
-    }
+      function updateGuestSummary() {
+        let guests = document.getElementById("guest-count").textContent;
+        let rooms = document.getElementById("room-count").textContent;
+        document.getElementById("guest-summary").innerHTML =
+          `ผู้ใหญ่ ${guests} คน<br><span class="text-sm text-gray-500">${rooms} ห้อง</span>` +
+          (document.getElementById("pet-checkbox").checked ?
+            `<span id="pet-summary" class="text-sm text-gray-500"> รับสัตว์</span>` :
+            `<span id="pet-summary" class="text-sm text-gray-500 hidden">รับสัตว์</span>`);
+      }
 
-    function changeAnimalCount(delta) {
-      let count = parseInt(document.getElementById("animal-count").textContent);
-      count = Math.max(0, count + delta);
-      document.getElementById("animal-count").textContent = count;
-    }
+      function toggleAnimalOptions() {
+        const checkbox = document.getElementById("pet-checkbox");
+        const options = document.getElementById("animal-options");
+        const petSummary = document.getElementById("pet-summary");
 
-    function updateGuestSummary() {
-      let guests = document.getElementById("guest-count").textContent;
-      let rooms = document.getElementById("room-count").textContent;
-      document.getElementById("guest-summary").innerHTML =
-        `ผู้ใหญ่ ${guests} คน<br><span class="text-sm text-gray-500">${rooms} ห้อง</span>` +
-        (document.getElementById("pet-checkbox").checked ?
-          `<span id="pet-summary" class="text-sm text-gray-500"> รับสัตว์</span>` :
-          `<span id="pet-summary" class="text-sm text-gray-500 hidden">รับสัตว์</span>`);
-    }
+        options.classList.toggle("hidden", !checkbox.checked);
+        petSummary.classList.toggle("hidden", !checkbox.checked);
+      }
 
-    function toggleAnimalOptions() {
-      const checkbox = document.getElementById("pet-checkbox");
-      const options = document.getElementById("animal-options");
-      const petSummary = document.getElementById("pet-summary");
+      function setActiveStay(type) {
+        const overnightBtn = document.getElementById('overnightBtn');
+        const dayuseBtn = document.getElementById('dayuseBtn');
 
-      options.classList.toggle("hidden", !checkbox.checked);
-      petSummary.classList.toggle("hidden", !checkbox.checked);
-    }
-  </script>
+        if (type === 'overnight') {
+          overnightBtn.classList.remove('bg-indigo-100', 'text-indigo-800');
+          overnightBtn.classList.add('bg-indigo-600', 'text-white');
+
+          dayuseBtn.classList.remove('bg-indigo-600', 'text-white');
+          dayuseBtn.classList.add('bg-indigo-100', 'text-indigo-800');
+        } else {
+          dayuseBtn.classList.remove('bg-indigo-100', 'text-indigo-800');
+          dayuseBtn.classList.add('bg-indigo-600', 'text-white');
+
+          overnightBtn.classList.remove('bg-indigo-600', 'text-white');
+          overnightBtn.classList.add('bg-indigo-100', 'text-indigo-800');
+        }
+      }
+    </script>
 </body>
 
 </html>
